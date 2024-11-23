@@ -38,6 +38,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   color: Colors.white,
                   fontStyle: FontStyle.italic),
             )
+            
           ],
         ),
       ),
