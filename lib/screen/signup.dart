@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:lottie/lottie.dart';
+import 'package:review_app/screen/donepage.dart';
 import 'package:review_app/screen/homescreen.dart';
 
 class Signup extends StatefulWidget {
@@ -62,8 +63,10 @@ class _SignupState extends State<Signup> {
                 Gap(20),
                 ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (ctx) => Homescreen()));
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (ctx) => Donepage()),
+                          (Route<dynamic> route) => false);
                     },
                     label: Text(
                       'SignUp',
