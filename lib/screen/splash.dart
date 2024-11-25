@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:review_app/screen/Login.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -25,23 +27,25 @@ class _SplashscreenState extends State<Splashscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset(
-              height: 200,
-              width: 300,
-              "assets/animation/Animation - 1732356584684.json",
-            ),
+            Lottie.asset('asset/Animation - 1732519087545.json',
+                height: 200, width: 350),
             Gap(30),
-            Text(
-              'Welcome!',
-              style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic),
-            )
-            
+            Text('Welcome!',
+                style: GoogleFonts.irishGrover(
+                    fontSize: 30, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (ctx) => Login()));
+    });
   }
 }
