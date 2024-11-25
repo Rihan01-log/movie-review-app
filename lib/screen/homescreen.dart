@@ -13,9 +13,13 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(
       body: Container(
         height: double.infinity,
-        color: Colors.blue,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Colors.black,
+            Colors.blue,
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        ),
       ),
     );
-    
   }
 }
