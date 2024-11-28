@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -10,13 +9,17 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Text(
+            'Critique Corner',
+            style: GoogleFonts.alatsi(color: Colors.white, fontSize: 24),
+          ),
+          centerTitle: true,
+        ),
         body: Container(
           height: double.infinity,
           decoration: BoxDecoration(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:review_app/screen/homescreen.dart';
+import 'package:review_app/screen/navigationbar/salonbar.dart';
 
 class Donepage extends StatefulWidget {
   const Donepage({super.key});
@@ -23,7 +24,8 @@ class _DonepageState extends State<Donepage> {
                 Colors.blueAccent,
               ], begin: Alignment.topLeft, end: Alignment.bottomRight),
             ),
-            child: Lottie.asset('asset/Animation - 1732517473820.json')),
+            child: Lottie.asset('asset/Animation - 1732517473820.json',
+                repeat: true)),
       )),
     );
   }
@@ -34,7 +36,7 @@ class _DonepageState extends State<Donepage> {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => Homescreen()));
+          context, MaterialPageRoute(builder: (ctx) => SalonbarPage()));
     });
   }
 }

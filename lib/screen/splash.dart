@@ -13,6 +13,16 @@ class Splashscreen extends StatefulWidget {
 
 class _SplashscreenState extends State<Splashscreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (ctx) => Login()));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -28,7 +38,7 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset('asset/Animation - 1732519087545.json',
-                height: 200, width: 350),
+                repeat: true, height: 200, width: 350),
             Gap(30),
             Text('Welcome!',
                 style: GoogleFonts.irishGrover(
@@ -37,15 +47,5 @@ class _SplashscreenState extends State<Splashscreen> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => Login()));
-    });
   }
 }
