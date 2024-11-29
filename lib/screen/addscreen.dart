@@ -21,7 +21,11 @@ class _AddscreenState extends State<Addscreen> {
             style: GoogleFonts.alatsi(color: Colors.white, fontSize: 24)),
       ),
       body: SingleChildScrollView(
-        child: Column(),
+        child: Column(
+          children: [
+            
+          ],
+        ),
       ),
     );
   }
