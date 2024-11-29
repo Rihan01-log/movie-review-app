@@ -11,8 +11,24 @@ class Addscreen extends StatefulWidget {
 }
 
 class _AddscreenState extends State<Addscreen> {
-  
+  final dateControler = TextEditingController();
+
   int rating = 5;
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? pickDate = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+        initialDate: DateTime.now());
+
+    if (pickDate != null) {
+      setState(() {
+        dateControler.text = pickDate.toString().split(' ')[0];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,14 +59,20 @@ class _AddscreenState extends State<Addscreen> {
                 ),
                 Gap(10),
                 TextFormField(
-                  
+                  controller: dateControler,
+                  readOnly: true,
+                  onTap: () {
+                    selectDate(context);
+                  },
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'Year'),
+                      suffixIcon: Icon(Icons.calendar_month),
+                      border: OutlineInputBorder(),
+                      hintText: 'Date of release'),
                 ),
                 Gap(10),
                 TextFormField(
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'name'),
+                      border: OutlineInputBorder(), hintText: 'Genre'),
                 ),
                 Gap(10),
                 Padding(
@@ -94,7 +116,10 @@ class _AddscreenState extends State<Addscreen> {
                 ),
                 Gap(10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Your review added')));
+                  },
                   child: Text('Submit'),
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(200, 50),
