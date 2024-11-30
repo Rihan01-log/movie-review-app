@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:review_app/screen/homescreen.dart';
 import 'package:review_app/screen/navigationbar/salonbar.dart';
 
 class Donepage extends StatefulWidget {
@@ -18,7 +17,7 @@ class _DonepageState extends State<Donepage> {
           child: Center(
         child: Container(
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
                 Colors.black,
                 Colors.blueAccent,
@@ -34,9 +33,9 @@ class _DonepageState extends State<Donepage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => SalonbarPage()));
+          context, MaterialPageRoute(builder: (ctx) => const SalonbarPage()));
     });
   }
 }

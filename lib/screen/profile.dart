@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Colors.black,
             Colors.blue,
@@ -37,7 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     GestureDetector(
                       onTap: () {},
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 70,
                         backgroundImage: AssetImage('asset/man.png'),
                       ),
@@ -54,12 +54,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           colors: [Colors.blue, Colors.purpleAccent])),
                   height: 500,
                   width: 400,
                   child: Padding(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -72,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: TextButton(
-                              onPressed: () {}, child: Text('Account')),
+                              onPressed: () {}, child: const Text('Account')),
                         ),
                         Container(
                           height: 50,
@@ -82,7 +82,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               border: Border.all(),
                               borderRadius: BorderRadius.circular(30)),
                           child: TextButton(
-                              onPressed: () {}, child: Text('Privacy')),
+                              onPressed: () {}, child: const Text('Privacy')),
                         ),
                         Container(
                           height: 50,
@@ -92,7 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               border: Border.all(),
                               borderRadius: BorderRadius.circular(30)),
                           child: TextButton(
-                              onPressed: () {}, child: Text('Settings')),
+                              onPressed: () {}, child: const Text('Settings')),
                         ),
                         Container(
                           height: 50,
@@ -103,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               borderRadius: BorderRadius.circular(30)),
                           child: TextButton(
                             onPressed: () {},
-                            child: Text('Log Out'),
+                            child: const Text('Log Out'),
                           ),
                         )
                       ],

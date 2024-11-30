@@ -16,9 +16,9 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => Login()));
+          context, MaterialPageRoute(builder: (ctx) => const Login()));
     });
   }
 
@@ -28,7 +28,7 @@ class _SplashscreenState extends State<Splashscreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Colors.black,
             Colors.blueAccent,
@@ -39,7 +39,7 @@ class _SplashscreenState extends State<Splashscreen> {
           children: [
             Lottie.asset('asset/Animation - 1732519087545.json',
                 repeat: true, height: 200, width: 350),
-            Gap(30),
+            const Gap(30),
             Text('Welcome!',
                 style: GoogleFonts.irishGrover(
                     fontSize: 30, fontWeight: FontWeight.bold)),

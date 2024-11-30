@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:review_app/screen/donepage.dart';
-import 'package:review_app/screen/homescreen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -18,14 +17,14 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
               Colors.black,
               Colors.blueAccent,
             ], begin: Alignment.topLeft, end: Alignment.bottomRight),
           ),
           child: Container(
-            margin: EdgeInsets.only(top: 100),
+            margin: const EdgeInsets.only(top: 100),
             child: Column(
               children: [
                 Lottie.asset('asset/Animation - 1732509755120.json',
@@ -33,7 +32,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Name',
                       hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(),
@@ -43,7 +42,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Email',
                       hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(),
@@ -53,33 +52,33 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 ElevatedButton.icon(
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (ctx) => Donepage()),
+                          MaterialPageRoute(builder: (ctx) => const Donepage()),
                           (Route<dynamic> route) => false);
                     },
-                    label: Text(
+                    label: const Text(
                       'SignUp',
                       style: TextStyle(color: Colors.white),
                     ),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.home,
                       color: Colors.white,
                     ),
                     style: ElevatedButton.styleFrom(
-                        minimumSize: Size(200, 50),
+                        minimumSize: const Size(200, 50),
                         shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.white),
+                            side: const BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.circular(15)),
                         backgroundColor: Colors.transparent)),
               ],

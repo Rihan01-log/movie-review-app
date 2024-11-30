@@ -15,17 +15,17 @@ class SalonbarPage extends StatefulWidget {
 class _SalonbarPageState extends State<SalonbarPage> {
   int currentIndex = 0;
   List<Widget> reviewPages = [
-    Homescreen(),
-    Addscreen(),
-    DashboardPage(),
-    ProfilePage(),
+    const Homescreen(),
+    const Addscreen(),
+    const DashboardPage(),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: reviewPages[currentIndex],
       bottomNavigationBar: SalomonBottomBar(
-          itemShape: StadiumBorder(),
+          itemShape: const StadiumBorder(),
           backgroundColor: Colors.yellow,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.white,
@@ -36,12 +36,12 @@ class _SalonbarPageState extends State<SalonbarPage> {
           },
           currentIndex: currentIndex,
           items: [
-            SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-            SalomonBottomBarItem(icon: Icon(Icons.add), title: Text('Review')),
+            SalomonBottomBarItem(icon: const Icon(Icons.home), title: const Text('Home')),
+            SalomonBottomBarItem(icon: const Icon(Icons.add), title: const Text('Review')),
             SalomonBottomBarItem(
-                icon: Icon(Icons.dashboard), title: Text('Dashboard')),
+                icon: const Icon(Icons.dashboard), title: const Text('Dashboard')),
             SalomonBottomBarItem(
-                icon: Icon(Icons.person), title: Text('Profile')),
+                icon: const Icon(Icons.person), title: const Text('Profile')),
           ]),
     );
   }

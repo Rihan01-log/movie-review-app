@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 class Addscreen extends StatefulWidget {
   const Addscreen({super.key});
@@ -47,36 +46,36 @@ class _AddscreenState extends State<Addscreen> {
               children: [
                 GestureDetector(
                   onTap: () {},
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 60,
                     backgroundImage: AssetImage('asset/man.png'),
                   ),
                 ),
-                Gap(10),
+                const Gap(10),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'name'),
                 ),
-                Gap(10),
+                const Gap(10),
                 TextFormField(
                   controller: dateControler,
                   readOnly: true,
                   onTap: () {
                     selectDate(context);
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       suffixIcon: Icon(Icons.calendar_month),
                       border: OutlineInputBorder(),
                       hintText: 'Date of release'),
                 ),
-                Gap(10),
+                const Gap(10),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Genre'),
                 ),
-                Gap(10),
-                Padding(
-                  padding: const EdgeInsets.all(10),
+                const Gap(10),
+                const Padding(
+                  padding: EdgeInsets.all(10),
                   child: Row(
                     children: [
                       Text(
@@ -108,22 +107,22 @@ class _AddscreenState extends State<Addscreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintMaxLines: 6,
                         hintText: 'Type somethig'),
                   ),
                 ),
-                Gap(10),
+                const Gap(10),
                 ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Your review added')));
+                        const SnackBar(content: Text('Your review added')));
                   },
-                  child: Text('Submit'),
                   style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50),
+                      minimumSize: const Size(200, 50),
                       backgroundColor: Colors.amber),
+                  child: const Text('Submit'),
                 )
               ],
             ),
