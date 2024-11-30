@@ -13,6 +13,9 @@ class _AddscreenState extends State<Addscreen> {
   final dateControler = TextEditingController();
 
   int rating = 5;
+  String? newValue;
+
+  List<String> bookOrMovie = ['Book', 'Movie'];
 
   Future<void> selectDate(BuildContext context) async {
     final DateTime? pickDate = await showDatePicker(
@@ -54,7 +57,7 @@ class _AddscreenState extends State<Addscreen> {
                 const Gap(10),
                 TextFormField(
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'name'),
+                      border: OutlineInputBorder(), hintText: 'Name'),
                 ),
                 const Gap(10),
                 TextFormField(
@@ -67,6 +70,36 @@ class _AddscreenState extends State<Addscreen> {
                       suffixIcon: Icon(Icons.calendar_month),
                       border: OutlineInputBorder(),
                       hintText: 'Date of release'),
+                ),
+                const Gap(10),
+                Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: DropdownButton(
+                      isExpanded: true,
+                      value: newValue,
+                      hint: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Book or Movie'),
+                      ),
+                      items: bookOrMovie.map((String itme) {
+                        return DropdownMenuItem<String>(
+                          value: itme,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(itme),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          newValue = value;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 const Gap(10),
                 TextFormField(
