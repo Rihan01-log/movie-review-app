@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/screen/Login.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -102,7 +103,12 @@ class _ProfilePageState extends State<ProfilePage> {
                               border: Border.all(),
                               borderRadius: BorderRadius.circular(30)),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => const Login()));
+                            },
                             child: const Text('Log Out'),
                           ),
                         )
