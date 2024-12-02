@@ -26,9 +26,9 @@ class _SalonbarPageState extends State<SalonbarPage> {
       body: reviewPages[currentIndex],
       bottomNavigationBar: SalomonBottomBar(
           itemShape: const StadiumBorder(),
-          backgroundColor: Colors.yellow,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white,
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.redAccent,
+          unselectedItemColor: Colors.black,
           onTap: (index) {
             setState(() {
               currentIndex = index;
@@ -36,10 +36,13 @@ class _SalonbarPageState extends State<SalonbarPage> {
           },
           currentIndex: currentIndex,
           items: [
-            SalomonBottomBarItem(icon: const Icon(Icons.home), title: const Text('Home')),
-            SalomonBottomBarItem(icon: const Icon(Icons.add), title: const Text('Review')),
             SalomonBottomBarItem(
-                icon: const Icon(Icons.dashboard), title: const Text('Dashboard')),
+                icon: const Icon(Icons.home), title: const Text('Home')),
+            SalomonBottomBarItem(
+                icon: const Icon(Icons.reviews), title: const Text('Review')),
+            SalomonBottomBarItem(
+                icon: const Icon(Icons.dashboard),
+                title: const Text('Dashboard')),
             SalomonBottomBarItem(
                 icon: const Icon(Icons.person), title: const Text('Profile')),
           ]),
