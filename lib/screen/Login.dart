@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'package:lottie/lottie.dart';
-import 'package:review_app/screen/donepage.dart';
 import 'package:review_app/screen/signup.dart';
 
 class Login extends StatefulWidget {
@@ -17,70 +15,65 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.black,
-              Colors.blueAccent,
-            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-          ),
-          child: Container(
-            margin: const EdgeInsets.only(top: 100),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Lottie.asset('asset/Animation - 1732511714272.json',
-                      height: 250, width: 250),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Email',
-                        hintStyle: TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'asset/colash.webp',
+              fit: BoxFit.cover,
+            ),
+            Container(
+              color: Colors.black.withOpacity(.4),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextFormField(
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                      hintText: 'Email',
+                      hintStyle: const TextStyle(
+                          color: Color.fromARGB(255, 251, 233, 233)),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    ),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.4)),
+                ),
+                const Gap(10),
+                TextFormField(
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                      hintText: 'Password',
+                      hintStyle: const TextStyle(
+                          color: Color.fromARGB(255, 251, 233, 233)),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.4)),
+                ),
+                const Gap(10),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red.withOpacity(0.5)),
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(color: Colors.white),
                   ),
-                  const Gap(15),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Password',
-                        hintStyle: TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(),
-                      ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Don\'t hvave any Account?',
+                      style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                  const Gap(20),
-                  ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (ctx) => const Donepage()));
-                      },
-                      label: const Text(
-                        'Login',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      icon: const Icon(
-                        Icons.home,
-                        color: Colors.white,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(200, 50),
-                          shape: RoundedRectangleBorder(
-                              side: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(15)),
-                          backgroundColor: Colors.transparent)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Don\'t have any account?'),
-                      TextButton(
+                    TextButton(
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -88,16 +81,15 @@ class _LoginState extends State<Login> {
                                   builder: (ctx) => const Signup()));
                         },
                         child: const Text(
-                          'SignUp',
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+                          'Sign In',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                )
+              ],
+            )
+          ],
         ),
       ),
     );

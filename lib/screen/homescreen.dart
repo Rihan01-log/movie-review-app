@@ -52,7 +52,6 @@ class _HomescreenState extends State<Homescreen> {
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
-                  
                   children: [
                     Column(
                       children: [
@@ -133,7 +132,7 @@ class _HomescreenState extends State<Homescreen> {
                           ],
                         ),
                         Text(
-                            'Discription:An emotional thriller \nshowcasing the suppressed '),
+                            'Discription:An emotional thriller \nshowcasing the suppressed'),
                       ],
                     ),
                   ),
