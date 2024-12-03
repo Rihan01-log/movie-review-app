@@ -84,8 +84,11 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => Donepage()));
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (ctx) => Donepage()),
+                        (Route<dynamic> route) => false,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red.withOpacity(0.5)),

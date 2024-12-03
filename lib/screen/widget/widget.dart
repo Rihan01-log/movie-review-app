@@ -1,16 +1,45 @@
 import 'package:flutter/material.dart';
 
-Widget movieAndBook({required String imagePath}) {
-  return Card(
-    elevation: 5,
-    child: SizedBox(
-      height: 267,
-      width: 180,
-      child: Column(
-        children: [
-          Image.asset(imagePath, height: 267, width: 1700, fit: BoxFit.cover),
-        ],
-      ),
+Widget movie({required String imagePath, required String text}) {
+  return Container(
+    height: 250,
+    width: 150,
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(3),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget book({required String imagePath, required String text}) {
+  return Container(
+    height: 250,
+    width: 150,
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadiusDirectional.circular(3),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )
+      ],
     ),
   );
 }
