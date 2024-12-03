@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:review_app/screen/widget/widget.dart';
 
 class Homescreen extends StatefulWidget {
@@ -34,7 +33,7 @@ class _HomescreenState extends State<Homescreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Gap(15),
+            const Gap(15),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -42,7 +41,7 @@ class _HomescreenState extends State<Homescreen> {
                 style: GoogleFonts.lato(color: Colors.black, fontSize: 30),
               ),
             ),
-            Gap(10),
+            const Gap(10),
             CarouselSlider(
               items: carousaliImages
                   .map((imagePath) => Card(
@@ -63,7 +62,7 @@ class _HomescreenState extends State<Homescreen> {
                 autoPlayCurve: Curves.linear,
               ),
             ),
-            Gap(10),
+            const Gap(10),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
@@ -71,7 +70,7 @@ class _HomescreenState extends State<Homescreen> {
                 style: GoogleFonts.lato(fontSize: 30),
               ),
             ),
-            Gap(10),
+            const Gap(10),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -102,11 +101,11 @@ class _HomescreenState extends State<Homescreen> {
                     book(
                         imagePath: 'asset/WingsofFireTheLostHeir_1.webp',
                         text: 'Wings of fire'),
-                    Gap(25),
+                    const Gap(25),
                     book(
                         imagePath: 'asset/A diary of young girl.jpg',
                         text: 'A diary of young girl'),
-                    Gap(25),
+                    const Gap(25),
                     book(
                         imagePath: 'asset/fire and blood (1).jpg',
                         text: 'Fire and Blood')
