@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/function/functions.dart';
+import 'package:review_app/models/model.dart';
 
 class Addscreen extends StatefulWidget {
   const Addscreen({super.key});
@@ -10,9 +12,13 @@ class Addscreen extends StatefulWidget {
 }
 
 class _AddscreenState extends State<Addscreen> {
+  final nameCtlr = TextEditingController();
   final dateControler = TextEditingController();
+  final genreCtlr = TextEditingController();
+  final typsomthingCtlr = TextEditingController();
 
   int rating = 5;
+
   String? newValue;
 
   List<String> bookOrMovie = ['Book', 'Movie'];
@@ -56,6 +62,7 @@ class _AddscreenState extends State<Addscreen> {
                 ),
                 const Gap(10),
                 TextFormField(
+                  controller: nameCtlr,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Name'),
                 ),
@@ -103,6 +110,7 @@ class _AddscreenState extends State<Addscreen> {
                 ),
                 const Gap(10),
                 TextFormField(
+                  controller: genreCtlr,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Genre'),
                 ),
@@ -140,6 +148,7 @@ class _AddscreenState extends State<Addscreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: typsomthingCtlr,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintMaxLines: 6,
@@ -149,6 +158,7 @@ class _AddscreenState extends State<Addscreen> {
                 const Gap(10),
                 ElevatedButton(
                   onPressed: () {
+                    submitBtn();
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Your review added')));
                   },
@@ -163,5 +173,28 @@ class _AddscreenState extends State<Addscreen> {
         ),
       ),
     );
+  }
+
+  void submitBtn() {
+    if (nameCtlr.text.isEmpty ||
+        dateControler.text.isEmpty ||
+        genreCtlr.text.isEmpty ||
+        typsomthingCtlr.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Fill the forms'),
+        ),
+      );
+      return;
+    }
+
+    final reviewBtn = ReviewModel(
+        name: nameCtlr.text,
+        dateofrelease: dateControler.text,
+        bookormoviel: newValue,
+        genre: genreCtlr.text,
+        typesomthing: typsomthingCtlr.text);
+    addReview(reviewBtn);
+    Navigator.pop(context);
   }
 }
