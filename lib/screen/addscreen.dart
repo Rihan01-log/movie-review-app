@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:review_app/function/functions.dart';
 import 'package:review_app/models/model.dart';
 
@@ -12,6 +15,7 @@ class Addscreen extends StatefulWidget {
 }
 
 class _AddscreenState extends State<Addscreen> {
+  File? images;
   final nameCtlr = TextEditingController();
   final dateControler = TextEditingController();
   final genreCtlr = TextEditingController();
@@ -53,13 +57,21 @@ class _AddscreenState extends State<Addscreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: const CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage('asset/man.png'),
-                  ),
-                ),
+                images != null
+                    ? CircleAvatar(
+                        backgroundImage: FileImage(images!),
+                        radius: 60,
+                      )
+                    : const CircleAvatar(
+                        radius: 60,
+                        backgroundImage: AssetImage("asset/man.png"),
+                      ),
+                Gap(10),
+                ElevatedButton(
+                    onPressed: () {
+                      pickImage();
+                    },
+                    child: const Text('Image')),
                 const Gap(10),
                 TextFormField(
                   controller: nameCtlr,
@@ -147,7 +159,8 @@ class _AddscreenState extends State<Addscreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
+                  child: TextField(
+                    maxLines: 3,
                     controller: typsomthingCtlr,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -193,8 +206,20 @@ class _AddscreenState extends State<Addscreen> {
         dateofrelease: dateControler.text,
         bookormoviel: newValue,
         genre: genreCtlr.text,
-        typesomthing: typsomthingCtlr.text);
+        typesomthing: typsomthingCtlr.text,
+        image: images?.path);
     addReview(reviewBtn);
     Navigator.pop(context);
+  }
+
+  Future<void> pickImage() async {
+    final returnImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnImage == null) {
+      return;
+    }
+    setState(() {
+      images = File(returnImage.path);
+    });
   }
 }

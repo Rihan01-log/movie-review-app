@@ -12,10 +12,13 @@ class ReviewModel {
   String? genre;
   @HiveField(4)
   String? typesomthing;
+  @HiveField(5)
+  String? image;
   ReviewModel(
       {required this.name,
       required this.dateofrelease,
       required this.bookormoviel,
       required this.genre,
-      required this.typesomthing});
+      required this.typesomthing,
+      required this.image});
 }

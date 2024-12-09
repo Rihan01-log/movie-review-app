@@ -1,8 +1,10 @@
-
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:review_app/screen/donepage.dart';
 
 import 'package:review_app/screen/signup.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,6 +14,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final emailCont = TextEditingController();
+  final passCont = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +37,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: emailCont,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Email',
@@ -50,6 +55,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: passCont,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Password',
@@ -65,7 +71,9 @@ class _LoginState extends State<Login> {
                 ),
                 const Gap(10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    checkLogin();
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red.withOpacity(0.5)),
                   child: const Text(
@@ -103,5 +111,27 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void checkLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final storedEmail = prefs.getString(userkey);
+    final storedPass = prefs.getString(passkey);
+    final email = emailCont.text;
+    final pass = passCont.text;
+    if (storedEmail == email && storedPass == pass) {
+      prefs.setBool(isLogged, true);
+
+      Navigator.pushAndRemoveUntil(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (ctx) => const Donepage()),
+        (Route<dynamic> route) => false,
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Please Register')));
+    }
   }
 }

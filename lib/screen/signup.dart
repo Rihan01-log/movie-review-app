@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/screen/donepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -10,7 +10,14 @@ class Signup extends StatefulWidget {
   State<Signup> createState() => _SignupState();
 }
 
+const userkey = 'userkey';
+const passkey = 'passkey';
+const isLogged = 'isLogged';
+
 class _SignupState extends State<Signup> {
+  final nameCtlr = TextEditingController();
+  final emailCtlr = TextEditingController();
+  final passwordCtlr = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +39,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: nameCtlr,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Name',
@@ -45,10 +53,11 @@ class _SignupState extends State<Signup> {
                         fillColor: Colors.white.withOpacity(0.4)),
                   ),
                 ),
-                Gap(6),
+                const Gap(6),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: emailCtlr,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Email',
@@ -66,6 +75,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: passwordCtlr,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Password',
@@ -84,11 +94,7 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (ctx) => Donepage()),
-                        (Route<dynamic> route) => false,
-                      );
+                      checkSign();
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red.withOpacity(0.5)),
@@ -104,5 +110,29 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
+  }
+
+  void checkSign() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final nametext = nameCtlr.text;
+    final emailText = emailCtlr.text;
+    final passText = passwordCtlr.text;
+    if (nametext.isEmpty || emailText.isEmpty || passText.isEmpty) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Fill the forms')));
+    } else {
+      prefs.setString('namekey', nametext);
+      prefs.setString(userkey, emailText);
+      prefs.setString(passkey, passText);
+      prefs.setBool(isLogged, true);
+
+      Navigator.pushAndRemoveUntil(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (ctx) => const Donepage()),
+        (Route<dynamic> route) => false,
+      );
+    }
   }
 }

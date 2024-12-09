@@ -73,16 +73,24 @@ class _HomescreenState extends State<Homescreen> {
             const Gap(10),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  movie(
-                      imagePath: 'asset/intersteller.jpg',
-                      text: 'Intersteller'),
-                  movie(imagePath: 'asset/spiderman.jpg', text: 'Spiderman'),
-                  movie(imagePath: 'asset/madmax.jpg', text: 'Mad Max fury'),
-                  movie(
-                      imagePath: 'asset/Dark knight.jpg', text: 'Dark Knight'),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12.5),
+                child: Row(
+                  children: [
+                    movie(
+                        imagePath: 'asset/intersteller.jpg',
+                        text: 'Intersteller'),
+                    Gap(20),
+                    movie(imagePath: 'asset/spiderman.jpg', text: 'Spiderman'),
+                    Gap(20),
+                    movie(imagePath: 'asset/madmax.jpg', text: 'Mad Max fury'),
+                    Gap(20),
+                    movie(
+                        imagePath: 'asset/Dark knight.jpg',
+                        text: 'Dark Knight'),
+                    Gap(20),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -108,7 +116,7 @@ class _HomescreenState extends State<Homescreen> {
                     const Gap(25),
                     book(
                         imagePath: 'asset/fire and blood (1).jpg',
-                        text: 'Fire and Blood')
+                        text: 'Fire and Blood'),
                   ],
                 ),
               ),

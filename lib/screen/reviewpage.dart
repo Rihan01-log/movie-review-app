@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/function/functions.dart';
 import 'package:review_app/models/model.dart';
@@ -12,6 +15,15 @@ class Reviewpage extends StatefulWidget {
 }
 
 class _ReviewpageState extends State<Reviewpage> {
+  String search = '';
+  List<ReviewModel> searchList = [];
+  @override
+  void initState() {
+    super.initState();
+    getReview();
+    searchList = reviewNotifier.value;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,45 +42,97 @@ class _ReviewpageState extends State<Reviewpage> {
           Icons.add,
         ),
       ),
-      body: ValueListenableBuilder<List<ReviewModel>>(
-        valueListenable: reviewNotifier,
-        builder: (context, reviews, child) {
-          return ListView.separated(
-              itemBuilder: (context, index) {
-                final data = reviews[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 150,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          data.name!,
-                          style: GoogleFonts.lato(
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(data.dateofrelease!),
-                        Text(data.bookormoviel!),
-                        Text(data.genre!),
-                        Text(data.typesomthing!),
-                      ],
-                    ),
-                  ),
-                );
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  search = value;
+                  searchUpdate();
+                });
               },
-              separatorBuilder: (context, index) {
-                return Divider();
-              },
-              itemCount: reviews.length);
-        },
+              decoration: InputDecoration(
+                  hintText: 'Search', suffixIcon: Icon(Icons.search)),
+            ),
+          ),
+          ValueListenableBuilder<List<ReviewModel>>(
+            valueListenable: reviewNotifier,
+            builder: (context, reviews, child) {
+              if (search.isEmpty) {
+                searchList = reviews;
+              }
+              return Expanded(
+                child: ListView.separated(
+                    itemBuilder: (context, index) {
+                      final data = searchList[index];
+                      return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 150,
+                            width: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              children: [
+                                Gap(10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                        radius: 60,
+                                        backgroundImage: data.image != null &&
+                                                data.image!.isNotEmpty
+                                            ? FileImage(File(data.image!))
+                                            : AssetImage(
+                                                'asset/video-player.png',
+                                              ))
+                                  ],
+                                ),
+                                Gap(10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data.name ?? 'Not provided',
+                                      style: GoogleFonts.lato(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    Text(
+                                        'Release Date:${data.dateofrelease ?? 'Not provided'}'),
+                                    Text(
+                                        'Type:${data.bookormoviel ?? 'Not provided'}'),
+                                    Text(
+                                        'Discripton:${data.typesomthing ?? 'Not provided'}')
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ));
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider();
+                    },
+                    itemCount: searchList.length),
+              );
+            },
+          ),
+        ],
       ),
     );
+  }
+
+  void searchUpdate() {
+    getReview();
+    searchList = reviewNotifier.value
+        .where((reviewSearch) =>
+            reviewSearch.name != null &&
+            reviewSearch.name!.toLowerCase().contains(search.toLowerCase()))
+        .toList();
   }
 }

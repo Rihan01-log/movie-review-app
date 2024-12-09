@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 Widget movie({required String imagePath, required String text}) {
   return Container(
     height: 250,
-    width: 150,
     child: Column(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(3),
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
+        Container(
+          height: 230,
+          width: 140,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(3),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Text(

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:review_app/models/model.dart';
+import 'package:review_app/screen/homescreen.dart';
+import 'package:review_app/screen/navigationbar/salonbar.dart';
 import 'package:review_app/screen/splash.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Splashscreen(),
+      home: SalonbarPage(),
       debugShowCheckedModeBanner: false,
     );
   }
