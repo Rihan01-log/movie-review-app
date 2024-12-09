@@ -47,7 +47,7 @@ class _HomescreenState extends State<Homescreen> {
                   .map((imagePath) => Card(
                         elevation: 5,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(9),
                           child: Image.asset(
                             imagePath,
                             fit: BoxFit.fill,
@@ -109,11 +109,11 @@ class _HomescreenState extends State<Homescreen> {
                     book(
                         imagePath: 'asset/WingsofFireTheLostHeir_1.webp',
                         text: 'Wings of fire'),
-                    const Gap(25),
+                    const Gap(20),
                     book(
                         imagePath: 'asset/A diary of young girl.jpg',
                         text: 'A diary of young girl'),
-                    const Gap(25),
+                    const Gap(20),
                     book(
                         imagePath: 'asset/fire and blood (1).jpg',
                         text: 'Fire and Blood'),

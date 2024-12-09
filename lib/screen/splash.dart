@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:review_app/screen/login.dart';
+import 'package:review_app/screen/navigationbar/salonbar.dart';
+import 'package:review_app/screen/signup.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -16,10 +21,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => const Login()));
-    });
+    checkLogin();
   }
 
   @override
@@ -47,5 +49,28 @@ class _SplashscreenState extends State<Splashscreen> {
         ),
       ),
     );
+  }
+
+  void checkLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final check = prefs.getBool(isLogged);
+    if (check == true) {
+      Timer(
+        const Duration(seconds: 2),
+        () => Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
+          context,
+          MaterialPageRoute(builder: (ctx) => const SalonbarPage()),
+        ),
+      );
+    } else {
+      Timer(
+          const Duration(seconds: 2),
+          () => Navigator.pushReplacement(
+                // ignore: use_build_context_synchronously
+                context,
+                MaterialPageRoute(builder: (ctx) => const Login()),
+              ));
+    }
   }
 }
