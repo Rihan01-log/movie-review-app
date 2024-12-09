@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 Widget movie({required String imagePath, required String text}) {
-  return Container(
+  return SizedBox(
     height: 250,
     child: Column(
       children: [
-        Container(
+        SizedBox(
           height: 230,
           width: 140,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(3),
+            borderRadius: BorderRadius.circular(5),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -18,7 +18,7 @@ Widget movie({required String imagePath, required String text}) {
         ),
         Text(
           text,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ],
     ),
@@ -26,13 +26,13 @@ Widget movie({required String imagePath, required String text}) {
 }
 
 Widget book({required String imagePath, required String text}) {
-  return Container(
+  return SizedBox(
     height: 250,
     width: 150,
     child: Column(
       children: [
         ClipRRect(
-          borderRadius: BorderRadiusDirectional.circular(3),
+          borderRadius: BorderRadiusDirectional.circular(5),
           child: Image.asset(
             imagePath,
             fit: BoxFit.cover,
@@ -40,7 +40,7 @@ Widget book({required String imagePath, required String text}) {
         ),
         Text(
           text,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         )
       ],
     ),
