@@ -23,13 +23,14 @@ class ReviewModelAdapter extends TypeAdapter<ReviewModel> {
       genre: fields[3] as String?,
       typesomthing: fields[4] as String?,
       image: fields[5] as String?,
+      rating: fields[6] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ReviewModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class ReviewModelAdapter extends TypeAdapter<ReviewModel> {
       ..writeByte(4)
       ..write(obj.typesomthing)
       ..writeByte(5)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(6)
+      ..write(obj.rating);
   }
 
   @override

@@ -57,21 +57,21 @@ class _AddscreenState extends State<Addscreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                images != null
-                    ? CircleAvatar(
-                        backgroundImage: FileImage(images!),
-                        radius: 60,
-                      )
-                    : const CircleAvatar(
-                        radius: 60,
-                        backgroundImage: AssetImage("asset/man.png"),
-                      ),
+                GestureDetector(
+                  onTap: () {
+                    pickImage();
+                  },
+                  child: images != null
+                      ? CircleAvatar(
+                          backgroundImage: FileImage(images!),
+                          radius: 60,
+                        )
+                      : const CircleAvatar(
+                          radius: 60,
+                          backgroundImage: AssetImage("asset/man.png"),
+                        ),
+                ),
                 Gap(10),
-                ElevatedButton(
-                    onPressed: () {
-                      pickImage();
-                    },
-                    child: const Text('Image')),
                 const Gap(10),
                 TextFormField(
                   controller: nameCtlr,
@@ -207,7 +207,8 @@ class _AddscreenState extends State<Addscreen> {
         bookormoviel: newValue,
         genre: genreCtlr.text,
         typesomthing: typsomthingCtlr.text,
-        image: images?.path);
+        image: images?.path,
+        rating: rating);
     addReview(reviewBtn);
     Navigator.pop(context);
   }

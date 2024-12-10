@@ -38,7 +38,7 @@ class _DashboardPageState extends State<DashboardPage> {
               key: const Key('pie_chart'),
               dataMap: data,
               colorList: colorList,
-              chartRadius: MediaQuery.of(context).size.width / 2,
+              chartRadius: MediaQuery.of(context).size.width / 2.5,
               legendOptions: const LegendOptions(
                   showLegendsInRow: false,
                   showLegends: true,

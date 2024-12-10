@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:review_app/models/model.dart';
+import 'package:review_app/models/profile/profilemodel.dart';
 import 'package:review_app/screen/homescreen.dart';
 import 'package:review_app/screen/navigationbar/salonbar.dart';
 import 'package:review_app/screen/splash.dart';
@@ -12,6 +13,7 @@ void main() async {
   if (!Hive.isAdapterRegistered(ReviewModelAdapter().typeId)) {
     Hive.registerAdapter(ReviewModelAdapter());
   }
+  Hive.registerAdapter(ProfilemodelAdapter());
 
   runApp(const MyApp());
 }

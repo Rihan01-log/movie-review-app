@@ -56,6 +56,7 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: passCont,
+                    obscureText: true,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: 'Password',

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-    part 'model.g.dart';
+part 'model.g.dart';
+
 @HiveType(typeId: 0)
 class ReviewModel {
   @HiveField(0)
@@ -14,11 +15,14 @@ class ReviewModel {
   String? typesomthing;
   @HiveField(5)
   String? image;
+  @HiveField(6)
+  int? rating;
   ReviewModel(
       {required this.name,
       required this.dateofrelease,
       required this.bookormoviel,
       required this.genre,
       required this.typesomthing,
-      required this.image});
+      required this.image,
+      this.rating});
 }

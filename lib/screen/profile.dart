@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:review_app/models/profile/function/profileFunction.dart';
+
 import 'package:review_app/screen/login.dart';
 import 'package:review_app/screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +18,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  File? profileimages;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,18 +43,35 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () {},
-                    child: const CircleAvatar(
-                      radius: 70,
-                      backgroundImage: AssetImage('asset/man.png'),
-                    ),
-                  ),
+                    onTap: () {
+                      pickImage();
+                    },
+                    child: profileimages != null
+                        ? CircleAvatar(
+                            backgroundImage: FileImage(profileimages!),
+                            radius: 60,
+                          )
+                        : const CircleAvatar(
+                            radius: 60,
+                            backgroundImage: AssetImage("asset/man.png"),
+                          ),
+                  )
                 ],
               ),
             ),
-            Text(
-              'Rihan',
-              style: GoogleFonts.aDLaMDisplay(fontSize: 26),
+            ValueListenableBuilder(
+              valueListenable: profileNotifier,
+              builder: (context, profil, child) {
+                if (profil.isNotEmpty) {
+                  return Text(
+                    profil.last.usrNmae ?? 'NAME',
+                    style: GoogleFonts.aBeeZee(
+                        fontWeight: FontWeight.bold, fontSize: 24),
+                  );
+                } else {
+                  return Text('No profile data available');
+                }
+              },
             ),
             Card(
               child: Container(
@@ -122,5 +152,16 @@ class _ProfilePageState extends State<ProfilePage> {
       MaterialPageRoute(builder: (ctx) => const Login()),
       (Route<dynamic> route) => false,
     );
+  }
+
+  Future<void> pickImage() async {
+    final returnImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnImage == null) {
+      return;
+    }
+    setState(() {
+      profileimages = File(returnImage.path);
+    });
   }
 }

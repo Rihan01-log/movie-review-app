@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/function/functions.dart';
 import 'package:review_app/models/model.dart';
 import 'package:review_app/screen/addscreen.dart';
+import 'package:review_app/screen/viewscreen.dart';
 
 class Reviewpage extends StatefulWidget {
   const Reviewpage({super.key});
@@ -17,6 +18,7 @@ class Reviewpage extends StatefulWidget {
 class _ReviewpageState extends State<Reviewpage> {
   String search = '';
   List<ReviewModel> searchList = [];
+
   @override
   void initState() {
     super.initState();
@@ -69,49 +71,70 @@ class _ReviewpageState extends State<Reviewpage> {
                       final data = searchList[index];
                       return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 150,
-                            width: 400,
-                            decoration: BoxDecoration(
-                                color: Colors.amber,
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Row(
-                              children: [
-                                Gap(10),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                        radius: 60,
-                                        backgroundImage: data.image != null &&
-                                                data.image!.isNotEmpty
-                                            ? FileImage(File(data.image!))
-                                            : AssetImage(
-                                                'asset/video-player.png',
-                                              ))
-                                  ],
-                                ),
-                                Gap(10),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      data.name ?? 'Not provided',
-                                      style: GoogleFonts.lato(
-                                        fontSize: 20,
+                          child: GestureDetector(
+                            onDoubleTap: () {
+                              deleteReview(index);
+                            },
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => Viewscreen(
+                                            name: data.name,
+                                            releaseDate: data.dateofrelease,
+                                            bookOrMovie: data.bookormoviel,
+                                            genre: data.genre,
+                                            images: data.image,
+                                            typesomthing: data.typesomthing,
+                                          )));
+                            },
+                            child: Container(
+                              height: 150,
+                              width: 400,
+                              decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Row(
+                                children: [
+                                  Gap(10),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                          radius: 60,
+                                          backgroundImage: data.image != null &&
+                                                  data.image!.isNotEmpty
+                                              ? FileImage(File(data.image!))
+                                              : AssetImage(
+                                                  'asset/video-player.png',
+                                                ))
+                                    ],
+                                  ),
+                                  Gap(10),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        data.name ?? 'Not provided',
+                                        style: GoogleFonts.lato(
+                                          fontSize: 20,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                        'Release Date:${data.dateofrelease ?? 'Not provided'}'),
-                                    Text(
-                                        'Type:${data.bookormoviel ?? 'Not provided'}'),
-                                    Text(
-                                        'Discripton:${data.typesomthing ?? 'Not provided'}')
-                                  ],
-                                ),
-                              ],
+                                      Text(
+                                          'Release Date:${data.dateofrelease ?? 'Not provided'}'),
+                                      Text(
+                                          'Type:${data.bookormoviel ?? 'Not provided'}'),
+                                      Text(
+                                          'Rating:${data.rating ?? 'Not provided'}'),
+                                      Text(
+                                          'Discripton:${data.typesomthing ?? 'Not provided'}'),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ));
                     },

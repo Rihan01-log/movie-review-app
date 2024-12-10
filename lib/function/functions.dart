@@ -22,3 +22,9 @@ Future<void> editReview(int index, ReviewModel value) async {
   await reviewDb.putAt(index, value);
   getReview();
 }
+
+Future<void> deleteReview(int index) async {
+  final reviewDb = await Hive.openBox<ReviewModel>('review database');
+  reviewDb.deleteAt(index);
+  getReview();
+}

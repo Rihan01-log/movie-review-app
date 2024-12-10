@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:review_app/models/profile/function/profileFunction.dart';
 import 'package:review_app/screen/donepage.dart';
+import 'package:review_app/models/profile/profilemodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
@@ -75,9 +77,11 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    obscureText: true,
                     controller: passwordCtlr,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
+                      
                         hintText: 'Password',
                         hintStyle: const TextStyle(
                             color: Color.fromARGB(255, 251, 233, 233)),
@@ -126,7 +130,12 @@ class _SignupState extends State<Signup> {
       prefs.setString(userkey, emailText);
       prefs.setString(passkey, passText);
       prefs.setBool(isLogged, true);
-
+      final usrname = nameCtlr.text;
+      final usrEmail = emailCtlr.text;
+      final usrPass = passwordCtlr.text;
+      final save =
+          Profilemodel(usrNmae: usrname, email: usrEmail, password: usrPass);
+      addProfile(save);
       Navigator.pushAndRemoveUntil(
         // ignore: use_build_context_synchronously
         context,
