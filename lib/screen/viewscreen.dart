@@ -50,7 +50,7 @@ class Viewscreen extends StatelessWidget {
                   radius: 60,
                   backgroundImage: images != null && images!.isNotEmpty
                       ? FileImage(File(images!))
-                      : AssetImage('asset/video-player.png'),
+                      : const AssetImage('asset/video-player.png'),
                 ),
                 Title(
                   color: Colors.white,

@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.bold, fontSize: 24),
                   );
                 } else {
-                  return Text('No profile data available');
+                  return const Text('No profile data available');
                 }
               },
             ),

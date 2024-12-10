@@ -38,9 +38,9 @@ class _ReviewpageState extends State<Reviewpage> {
         backgroundColor: Colors.redAccent,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (ctx) => Addscreen()));
+              context, MaterialPageRoute(builder: (ctx) => const Addscreen()));
         },
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
@@ -55,7 +55,7 @@ class _ReviewpageState extends State<Reviewpage> {
                   searchUpdate();
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Search', suffixIcon: Icon(Icons.search)),
             ),
           ),
@@ -97,7 +97,7 @@ class _ReviewpageState extends State<Reviewpage> {
                                   borderRadius: BorderRadius.circular(10)),
                               child: Row(
                                 children: [
-                                  Gap(10),
+                                  const Gap(10),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -106,12 +106,12 @@ class _ReviewpageState extends State<Reviewpage> {
                                           backgroundImage: data.image != null &&
                                                   data.image!.isNotEmpty
                                               ? FileImage(File(data.image!))
-                                              : AssetImage(
+                                              : const AssetImage(
                                                   'asset/video-player.png',
                                                 ))
                                     ],
                                   ),
-                                  Gap(10),
+                                  const Gap(10),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:

@@ -71,7 +71,7 @@ class _AddscreenState extends State<Addscreen> {
                           backgroundImage: AssetImage("asset/man.png"),
                         ),
                 ),
-                Gap(10),
+                const Gap(10),
                 const Gap(10),
                 TextFormField(
                   controller: nameCtlr,
@@ -194,7 +194,7 @@ class _AddscreenState extends State<Addscreen> {
         genreCtlr.text.isEmpty ||
         typsomthingCtlr.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Fill the forms'),
         ),
       );
