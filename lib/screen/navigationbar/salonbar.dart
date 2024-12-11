@@ -19,7 +19,7 @@ class _SalonbarPageState extends State<SalonbarPage> {
     const Homescreen(),
     const Reviewpage(),
     const DashboardPage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

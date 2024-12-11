@@ -1,24 +1,25 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:review_app/models/profile/function/profileFunction.dart';
+import 'package:review_app/models/profile/profilemodel.dart';
+import 'package:review_app/screen/editprofile.dart';
 import 'package:review_app/screen/login.dart';
 import 'package:review_app/screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  ProfilePage({
+    super.key,
+  });
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  File? profileimages;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getProfile();
   }
@@ -39,19 +40,26 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      pickImage();
+                  ValueListenableBuilder<List<Profilemodel>>(
+                    valueListenable: profileNotifier,
+                    builder: (context, profileList, child) {
+                      if (profileList.isEmpty) {
+                        return const CircleAvatar(
+                          backgroundImage:
+                              AssetImage('asset/sm_5afec9fb7bd04.jpg'),
+                          radius: 60,
+                        );
+                      }
+
+                      final profile = profileList.last;
+                      return CircleAvatar(
+                        backgroundImage: profile.profileimage != null
+                            ? FileImage(File(profile.profileimage!))
+                            : const AssetImage('asset/sm_5afec9fb7bd04.jpg')
+                                as ImageProvider,
+                        radius: 60,
+                      );
                     },
-                    child: profileimages != null
-                        ? CircleAvatar(
-                            backgroundImage: FileImage(profileimages!),
-                            radius: 60,
-                          )
-                        : const CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage("asset/man.png"),
-                          ),
                   )
                 ],
               ),
@@ -92,7 +100,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: TextButton(
-                            onPressed: () {}, child: const Text('Account')),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => Editprofile()));
+                            },
+                            child: const Text('Edit Profile')),
                       ),
                       Container(
                         height: 50,
@@ -149,16 +163,5 @@ class _ProfilePageState extends State<ProfilePage> {
       MaterialPageRoute(builder: (ctx) => const Login()),
       (Route<dynamic> route) => false,
     );
-  }
-
-  Future<void> pickImage() async {
-    final returnImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (returnImage == null) {
-      return;
-    }
-    setState(() {
-      profileimages = File(returnImage.path);
-    });
   }
 }
