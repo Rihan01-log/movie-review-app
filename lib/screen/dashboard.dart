@@ -33,22 +33,20 @@ class _DashboardPageState extends State<DashboardPage> {
             'Book Review': bk.length.toDouble(),
             'Movie Review': mb.length.toDouble()
           };
-          return Container(
-            child: PieChart(
-              key: const Key('pie_chart'),
-              dataMap: data,
-              colorList: colorList,
-              chartRadius: MediaQuery.of(context).size.width / 2.5,
-              legendOptions: const LegendOptions(
-                  showLegendsInRow: false,
-                  showLegends: true,
-                  legendShape: BoxShape.circle,
-                  legendTextStyle: TextStyle(fontWeight: FontWeight.bold)),
-              chartValuesOptions: const ChartValuesOptions(
-                  showChartValuesInPercentage: true,
-                  showChartValuesOutside: true,
-                  decimalPlaces: 1),
-            ),
+          return PieChart(
+            key: const Key('pie_chart'),
+            dataMap: data,
+            colorList: colorList,
+            chartRadius: MediaQuery.of(context).size.width / 2.5,
+            legendOptions: const LegendOptions(
+                showLegendsInRow: false,
+                showLegends: true,
+                legendShape: BoxShape.circle,
+                legendTextStyle: TextStyle(fontWeight: FontWeight.bold)),
+            chartValuesOptions: const ChartValuesOptions(
+                showChartValuesInPercentage: true,
+                showChartValuesOutside: true,
+                decimalPlaces: 1),
           );
         },
       ),
