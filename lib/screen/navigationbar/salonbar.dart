@@ -17,7 +17,7 @@ class _SalonbarPageState extends State<SalonbarPage> {
   int currentIndex = 0;
   List<Widget> reviewPages = [
     const Homescreen(),
-    Reviewpage(),
+    const Reviewpage(),
     const DashboardPage(),
     const ProfilePage(),
   ];
@@ -28,7 +28,7 @@ class _SalonbarPageState extends State<SalonbarPage> {
       bottomNavigationBar: SalomonBottomBar(
           itemShape: const StadiumBorder(),
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.redAccent,
+          selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           onTap: (index) {
             setState(() {

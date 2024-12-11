@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 // ignore: must_be_immutable
 class Viewscreen extends StatelessWidget {
   String? name;
@@ -43,24 +42,43 @@ class Viewscreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CircleAvatar(
-                  radius: 60,
-                  backgroundImage: images != null && images!.isNotEmpty
-                      ? FileImage(File(images!))
-                      : const AssetImage('asset/video-player.png'),
-                ),
-                Title(
-                  color: Colors.white,
-                  child: Text('Name:${name ?? 'not provided'}'),
-                ),
-                Text('Release Date:${releaseDate ?? 'not provided'}'),
-                Text('Book Or Movie:${bookOrMovie ?? 'not provided'}'),
-                Text('Genre:${genre ?? 'not provided'}'),
-                Text('Discription:${typesomthing ?? 'not provided'}')
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundImage: images != null && images!.isNotEmpty
+                        ? FileImage(File(images!))
+                        : const AssetImage('asset/sm_5afec9fb7bd04.jpg'),
+                  ),
+                  Title(
+                    color: Colors.white,
+                    child: Text(
+                      'Name: ${name ?? 'not provided'}',
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    'Release Date: ${releaseDate ?? 'not provided'}',
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Type: ${bookOrMovie ?? 'not provided'}',
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Genre:${genre ?? 'not provided'}',
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  Text('Discription: ${typesomthing ?? 'not provided'}')
+                ],
+              ),
             ),
           ),
         ),

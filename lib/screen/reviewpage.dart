@@ -107,7 +107,7 @@ class _ReviewpageState extends State<Reviewpage> {
                                                   data.image!.isNotEmpty
                                               ? FileImage(File(data.image!))
                                               : const AssetImage(
-                                                  'asset/video-player.png',
+                                                  'asset/sm_5afec9fb7bd04.jpg',
                                                 ))
                                     ],
                                   ),
@@ -117,11 +117,15 @@ class _ReviewpageState extends State<Reviewpage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        data.name ?? 'Not provided',
-                                        style: GoogleFonts.lato(
-                                          fontSize: 20,
-                                        ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            data.name ?? 'Not provided',
+                                            style: GoogleFonts.lato(
+                                              fontSize: 20,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Text(
                                           'Release Date:${data.dateofrelease ?? 'Not provided'}'),
@@ -133,6 +137,9 @@ class _ReviewpageState extends State<Reviewpage> {
                                           'Discripton:${data.typesomthing ?? 'Not provided'}'),
                                     ],
                                   ),
+                                  // Gap(30),
+                                  // IconButton(
+                                  //     onPressed: () {}, icon: Icon(Icons.edit))
                                 ],
                               ),
                             ),

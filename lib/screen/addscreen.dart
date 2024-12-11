@@ -17,7 +17,7 @@ class Addscreen extends StatefulWidget {
 class _AddscreenState extends State<Addscreen> {
   File? images;
   final nameCtlr = TextEditingController();
-  final dateControler = TextEditingController();
+  final dateControler = TextEditingController(); 
   final genreCtlr = TextEditingController();
   final typsomthingCtlr = TextEditingController();
 
@@ -149,7 +149,9 @@ class _AddscreenState extends State<Addscreen> {
                           });
                         },
                         icon: Icon(
-                          index < rating ? Icons.star : Icons.star_border,
+                          index < rating
+                              ? Icons.star
+                              : Icons.star_border_outlined,
                           color: Colors.amber,
                         ),
                         iconSize: 30,
