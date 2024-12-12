@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:review_app/constants/textconstants.dart';
 import 'package:review_app/function/functions.dart';
 import 'package:review_app/models/model.dart';
 
@@ -17,7 +18,7 @@ class Addscreen extends StatefulWidget {
 class _AddscreenState extends State<Addscreen> {
   File? images;
   final nameCtlr = TextEditingController();
-  final dateControler = TextEditingController(); 
+  final dateControler = TextEditingController();
   final genreCtlr = TextEditingController();
   final typsomthingCtlr = TextEditingController();
 
@@ -47,7 +48,7 @@ class _AddscreenState extends State<Addscreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: Text('Review',
+        title: Text(Textconstants.reviewPage,
             style: GoogleFonts.alatsi(color: Colors.white, fontSize: 24)),
       ),
       body: Center(
@@ -76,7 +77,8 @@ class _AddscreenState extends State<Addscreen> {
                 TextFormField(
                   controller: nameCtlr,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'Name'),
+                      border: OutlineInputBorder(),
+                      hintText: Textconstants.nameadd),
                 ),
                 const Gap(10),
                 TextFormField(
@@ -88,7 +90,7 @@ class _AddscreenState extends State<Addscreen> {
                   decoration: const InputDecoration(
                       suffixIcon: Icon(Icons.calendar_month),
                       border: OutlineInputBorder(),
-                      hintText: 'Date of release'),
+                      hintText: Textconstants.dateOfRealese),
                 ),
                 const Gap(10),
                 Padding(
@@ -101,7 +103,7 @@ class _AddscreenState extends State<Addscreen> {
                       value: newValue,
                       hint: const Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Book or Movie'),
+                        child: Text(Textconstants.bookOrMovie),
                       ),
                       items: bookOrMovie.map((String itme) {
                         return DropdownMenuItem<String>(
@@ -124,7 +126,8 @@ class _AddscreenState extends State<Addscreen> {
                 TextFormField(
                   controller: genreCtlr,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'Genre'),
+                      border: OutlineInputBorder(),
+                      hintText: Textconstants.genre),
                 ),
                 const Gap(10),
                 const Padding(
@@ -132,7 +135,7 @@ class _AddscreenState extends State<Addscreen> {
                   child: Row(
                     children: [
                       Text(
-                        'Rating',
+                        Textconstants.rating,
                         style: TextStyle(fontSize: 16),
                       )
                     ],
@@ -167,7 +170,7 @@ class _AddscreenState extends State<Addscreen> {
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintMaxLines: 6,
-                        hintText: 'Type somethig'),
+                        hintText: Textconstants.typesomthing),
                   ),
                 ),
                 const Gap(10),
@@ -180,7 +183,7 @@ class _AddscreenState extends State<Addscreen> {
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(200, 50),
                       backgroundColor: Colors.amber),
-                  child: const Text('Submit'),
+                  child: const Text(Textconstants.submitBtn),
                 )
               ],
             ),

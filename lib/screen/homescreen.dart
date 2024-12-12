@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/constants/textconstants.dart';
 import 'package:review_app/screen/widget/widget.dart';
 
 class Homescreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _HomescreenState extends State<Homescreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Critique Corner',
+          Textconstants.homePage,
           style: GoogleFonts.alatsi(color: Colors.white, fontSize: 24),
         ),
         centerTitle: true,
@@ -37,7 +38,7 @@ class _HomescreenState extends State<Homescreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'New Release',
+                Textconstants.homeTitle1,
                 style: GoogleFonts.lato(color: Colors.black, fontSize: 30),
               ),
             ),
@@ -66,7 +67,7 @@ class _HomescreenState extends State<Homescreen> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
-                'Movies',
+                Textconstants.homeTitle2,
                 style: GoogleFonts.lato(fontSize: 30),
               ),
             ),
@@ -79,15 +80,19 @@ class _HomescreenState extends State<Homescreen> {
                   children: [
                     movie(
                         imagePath: 'asset/intersteller.jpg',
-                        text: 'Intersteller'),
+                        text: Textconstants.movieName1),
                     const Gap(20),
-                    movie(imagePath: 'asset/spiderman.jpg', text: 'Spiderman'),
+                    movie(
+                        imagePath: 'asset/spiderman.jpg',
+                        text: Textconstants.movieName2),
                     const Gap(20),
-                    movie(imagePath: 'asset/madmax.jpg', text: 'Mad Max fury'),
+                    movie(
+                        imagePath: 'asset/madmax.jpg',
+                        text: Textconstants.movieName3),
                     const Gap(20),
                     movie(
                         imagePath: 'asset/Dark knight.jpg',
-                        text: 'Dark Knight'),
+                        text: Textconstants.movieName4),
                     const Gap(20),
                   ],
                 ),
@@ -96,7 +101,7 @@ class _HomescreenState extends State<Homescreen> {
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Text(
-                'Books',
+                Textconstants.homeTitle3,
                 style: GoogleFonts.lato(fontSize: 30),
               ),
             ),
@@ -108,16 +113,15 @@ class _HomescreenState extends State<Homescreen> {
                   children: [
                     book(
                         imagePath: 'asset/WingsofFireTheLostHeir_1.webp',
-                        text: 'Wings of fire'),
+                        text: Textconstants.bookName1),
                     const Gap(20),
                     book(
                         imagePath: 'asset/A diary of young girl.jpg',
-                        text: 'A diary of young girl'),
+                        text: Textconstants.bookName2),
                     const Gap(20),
                     book(
                         imagePath: 'asset/fire and blood (1).jpg',
-                        text: 'Fire and Blood'),
-                      
+                        text: Textconstants.bookName3),
                   ],
                 ),
               ),

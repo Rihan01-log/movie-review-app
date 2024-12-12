@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/constants/textconstants.dart';
 import 'package:review_app/function/functions.dart';
 import 'package:review_app/models/model.dart';
 import 'package:review_app/screen/addscreen.dart';
@@ -31,7 +32,8 @@ class _ReviewpageState extends State<Reviewpage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Review', style: GoogleFonts.lato(color: Colors.white)),
+        title: Text(Textconstants.reviewPage,
+            style: GoogleFonts.lato(color: Colors.white)),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
@@ -56,7 +58,8 @@ class _ReviewpageState extends State<Reviewpage> {
                 });
               },
               decoration: const InputDecoration(
-                  hintText: 'Search', suffixIcon: Icon(Icons.search)),
+                  hintText: Textconstants.searchBar,
+                  suffixIcon: Icon(Icons.search)),
             ),
           ),
           ValueListenableBuilder<List<ReviewModel>>(
@@ -128,13 +131,13 @@ class _ReviewpageState extends State<Reviewpage> {
                                         ],
                                       ),
                                       Text(
-                                          'Release Date:${data.dateofrelease ?? 'Not provided'}'),
+                                          '${Textconstants.namecontainer}:${data.dateofrelease ?? 'Not provided'}'),
                                       Text(
-                                          'Type:${data.bookormoviel ?? 'Not provided'}'),
+                                          '${Textconstants.typeof}:${data.bookormoviel ?? 'Not provided'}'),
                                       Text(
-                                          'Rating:${data.rating ?? 'Not provided'}'),
+                                          '${Textconstants.ratings}:${data.rating ?? 'Not provided'}'),
                                       Text(
-                                          'Discripton:${data.typesomthing ?? 'Not provided'}'),
+                                          '${Textconstants.discription}:${data.typesomthing ?? 'Not provided'}'),
                                     ],
                                   ),
                                   // Gap(30),
