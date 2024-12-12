@@ -145,8 +145,11 @@ class _EditprofileState extends State<Editprofile> {
     var input = await Hive.openBox<Profilemodel>('database');
 
     input.putAt(input.values.length - 1, save);
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Your Profile is updated')));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Your Profile is updated'),
+      ),
+    ); 
 
     Navigator.pop(context);
   }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:review_app/models/profile/profilemodel.dart';
@@ -8,7 +6,7 @@ ValueNotifier<List<Profilemodel>> profileNotifier = ValueNotifier([]);
 
 Future<void> addProfile(Profilemodel values) async {
   final profileDb = await Hive.openBox<Profilemodel>('database');
-  log(profileDb.values.toString());
+
   await profileDb.add(values);
   getProfile();
 }
