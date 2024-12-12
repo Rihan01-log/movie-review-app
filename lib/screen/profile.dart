@@ -104,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (ctx) => Editprofile()));
+                                      builder: (ctx) => const Editprofile()));
                             },
                             child: const Text('Edit Profile')),
                       ),

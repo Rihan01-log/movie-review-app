@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/constants/imageconatants.dart';
 import 'package:review_app/constants/textconstants.dart';
 import 'package:review_app/screen/widget/widget.dart';
 
@@ -79,19 +80,19 @@ class _HomescreenState extends State<Homescreen> {
                 child: Row(
                   children: [
                     movie(
-                        imagePath: 'asset/intersteller.jpg',
+                        imagePath: Imageconatants.homeImages1,
                         text: Textconstants.movieName1),
                     const Gap(20),
                     movie(
-                        imagePath: 'asset/spiderman.jpg',
+                        imagePath: Imageconatants.homeImages2,
                         text: Textconstants.movieName2),
                     const Gap(20),
                     movie(
-                        imagePath: 'asset/madmax.jpg',
+                        imagePath: Imageconatants.homeImages3,
                         text: Textconstants.movieName3),
                     const Gap(20),
                     movie(
-                        imagePath: 'asset/Dark knight.jpg',
+                        imagePath: Imageconatants.homeImages4,
                         text: Textconstants.movieName4),
                     const Gap(20),
                   ],
@@ -112,15 +113,15 @@ class _HomescreenState extends State<Homescreen> {
                 child: Row(
                   children: [
                     book(
-                        imagePath: 'asset/WingsofFireTheLostHeir_1.webp',
+                        imagePath: Imageconatants.bookImages1,
                         text: Textconstants.bookName1),
                     const Gap(20),
                     book(
-                        imagePath: 'asset/A diary of young girl.jpg',
+                        imagePath: Imageconatants.bookImages2,
                         text: Textconstants.bookName2),
                     const Gap(20),
                     book(
-                        imagePath: 'asset/fire and blood (1).jpg',
+                        imagePath: Imageconatants.bookImages3,
                         text: Textconstants.bookName3),
                   ],
                 ),

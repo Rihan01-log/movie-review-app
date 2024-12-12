@@ -18,7 +18,7 @@ class Addscreen extends StatefulWidget {
 class _AddscreenState extends State<Addscreen> {
   File? images;
   final nameCtlr = TextEditingController();
-  final dateControler = TextEditingController(); 
+  final dateControler = TextEditingController();
   final genreCtlr = TextEditingController();
   final typsomthingCtlr = TextEditingController();
 

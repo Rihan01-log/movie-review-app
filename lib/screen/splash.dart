@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:review_app/screen/login.dart';
 import 'package:review_app/screen/navigationbar/salonbar.dart';
 import 'package:review_app/screen/signup.dart';
@@ -38,12 +37,14 @@ class _SplashscreenState extends State<Splashscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset('asset/Animation - 1732519087545.json',
-                repeat: true, height: 200, width: 350),
+            // Lottie.asset('asset/Animation - 1732519087545.json',
+            //     repeat: true, height: 200, width: 350),
             const Gap(30),
             Text('Welcome!',
                 style: GoogleFonts.irishGrover(
-                    fontSize: 30, fontWeight: FontWeight.bold)),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
           ],
         ),
       ),
@@ -57,7 +58,6 @@ class _SplashscreenState extends State<Splashscreen> {
       Timer(
         const Duration(seconds: 2),
         () => Navigator.pushReplacement(
-          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (ctx) => const SalonbarPage()),
         ),
