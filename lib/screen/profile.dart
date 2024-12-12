@@ -9,7 +9,7 @@ import 'package:review_app/screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({
+  const ProfilePage({
     super.key,
   });
 
