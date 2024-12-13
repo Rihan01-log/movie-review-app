@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:review_app/screen/dashboard.dart';
 import 'package:review_app/screen/homescreen.dart';
 import 'package:review_app/screen/profile.dart';
-import 'package:review_app/screen/reviewpage.dart';
+
+import 'package:review_app/screen/tab.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class SalonbarPage extends StatefulWidget {
@@ -17,9 +18,9 @@ class _SalonbarPageState extends State<SalonbarPage> {
   int currentIndex = 0;
   List<Widget> reviewPages = [
     const Homescreen(),
-    const Reviewpage(),
+    const TabPage(),
     const DashboardPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

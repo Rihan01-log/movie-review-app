@@ -17,26 +17,30 @@ class _TabPageState extends State<TabPage> {
         length: 2,
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.blue,
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (ctx) => Addscreen()));
+                  context, MaterialPageRoute(builder: (ctx) => const Addscreen()));
             },
-            
+            child: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
           ),
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: Text(
+            title: const Text(
               "Review",
               style: TextStyle(color: Colors.white),
             ),
             centerTitle: true,
             toolbarHeight: 60,
-            bottom: TabBar(
+            bottom: const TabBar(
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.white,
                 indicatorColor: Colors.blue,
                 indicatorSize: TabBarIndicatorSize.tab,
-                tabs: const [
+                tabs: [
                   Tab(
                     text: 'Movie',
                   ),
@@ -45,7 +49,7 @@ class _TabPageState extends State<TabPage> {
                   ),
                 ]),
           ),
-          body: TabBarView(children: [
+          body: const TabBarView(children: [
             MovieTabPage(),
             BookTabpage(),
           ]),

@@ -15,9 +15,12 @@ class MovieTabPage extends StatefulWidget {
 }
 
 class _MovieTabPageState extends State<MovieTabPage> {
+  final searchMovie = TextEditingController();
+  String moevieSearch = '';
   @override
   void initState() {
-    // TODO: implement initState
+   
+   
     super.initState();
     getReview();
   }
@@ -25,85 +28,121 @@ class _MovieTabPageState extends State<MovieTabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ValueListenableBuilder(
-      valueListenable: reviewNotifier,
-      builder: (context, value, child) {
-        final data = value.where((rew) => rew.bookormoviel == 'Movie').toList();
-        return ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            final movie = data[index];
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (ctx) => Viewscreen(
-                            name: movie.name,
-                            releaseDate: movie.dateofrelease,
-                            bookOrMovie: movie.bookormoviel,
-                            genre: movie.genre,
-                            images: movie.image,
-                            typesomthing: movie.typesomthing)));
-              },
-              child: Container(
-                height: 150,
-                width: 400,
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  children: [
-                    const Gap(10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                            radius: 60,
-                            backgroundImage: movie.image != null &&
-                                    movie.image!.isNotEmpty
-                                ? FileImage(File(movie.image ?? 'not provided'))
-                                : const AssetImage(
-                                    'asset/sm_5afec9fb7bd04.jpg',
-                                  ))
-                      ],
-                    ),
-                    const Gap(10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
+        body: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            onChanged: (value) {
+              setState(() {
+                moevieSearch = value;
+              });
+            },
+            decoration: const InputDecoration(
+                hintText: Textconstants.searchBar,
+                suffixIcon: Icon(Icons.search)),
+          ),
+        ),
+        Expanded(
+          child: ValueListenableBuilder(
+            valueListenable: reviewNotifier,
+            builder: (context, value, child) {
+              final data = value
+                  .where((rew) =>
+                      rew.bookormoviel == 'Movie' &&
+                      (rew.name
+                              ?.toLowerCase()
+                              .contains(moevieSearch.toLowerCase()) ??
+                          false))
+                  .toList();
+              return ListView.separated(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final movie = data[index];
+                  return GestureDetector(
+                    onDoubleTap: () {
+                      deleteReview(index);
+                    },
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => Viewscreen(
+                                  name: movie.name,
+                                  releaseDate: movie.dateofrelease,
+                                  bookOrMovie: movie.bookormoviel,
+                                  genre: movie.genre,
+                                  images: movie.image,
+                                  typesomthing: movie.typesomthing)));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 150,
+                        width: 400,
+                        decoration: BoxDecoration(
+                            color: Colors.amber,
+                            border: Border.all(),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
                           children: [
-                            Text(
-                              movie.name ?? 'Not provided',
-                              style: GoogleFonts.lato(
-                                fontSize: 20,
-                              ),
+                            const Gap(10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                    radius: 60,
+                                    backgroundImage: movie.image != null &&
+                                            movie.image!.isNotEmpty
+                                        ? FileImage(
+                                            File(movie.image ?? 'not provided'))
+                                        : const AssetImage(
+                                            'asset/sm_5afec9fb7bd04.jpg',
+                                          ))
+                              ],
                             ),
+                            const Gap(10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      movie.name ?? 'Not provided',
+                                      style: GoogleFonts.lato(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                    '${Textconstants.namecontainer}:${movie.dateofrelease ?? 'Not provided'}'),
+                                Text(
+                                    '${Textconstants.typeof}:${movie.bookormoviel ?? 'Not provided'}'),
+                                Text(
+                                    '${Textconstants.ratings}:${movie.rating ?? 'Not provided'}'),
+                                Text(
+                                    '${Textconstants.discription}:${movie.typesomthing ?? 'Not provided'}'),
+                              ],
+                            ),
+                            // Gap(30),
+                            // IconButton(
+                            //     onPressed: () {}, icon: Icon(Icons.edit))
                           ],
                         ),
-                        Text(
-                            '${Textconstants.namecontainer}:${movie.dateofrelease ?? 'Not provided'}'),
-                        Text(
-                            '${Textconstants.typeof}:${movie.bookormoviel ?? 'Not provided'}'),
-                        Text(
-                            '${Textconstants.ratings}:${movie.rating ?? 'Not provided'}'),
-                        Text(
-                            '${Textconstants.discription}:${movie.typesomthing ?? 'Not provided'}'),
-                      ],
+                      ),
                     ),
-                    // Gap(30),
-                    // IconButton(
-                    //     onPressed: () {}, icon: Icon(Icons.edit))
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      },
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const Divider();
+                },
+              );
+            },
+          ),
+        ),
+      ],
     ));
   }
 }

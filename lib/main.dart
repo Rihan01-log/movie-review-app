@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:review_app/models/model.dart';
 import 'package:review_app/models/profile/profilemodel.dart';
 import 'package:review_app/screen/splash.dart';
-import 'package:review_app/screen/tab.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: TabPage(),
+      home: Splashscreen(),
       debugShowCheckedModeBanner: false,
     );
   }
