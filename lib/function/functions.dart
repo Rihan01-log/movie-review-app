@@ -12,7 +12,7 @@ Future<void> addReview(ReviewModel values) async {
 
 Future<void> getReview() async {
   final reviewDb = await Hive.openBox<ReviewModel>('review database');
-  reviewNotifier.value.clear();
+  // reviewNotifier.value.clear();
   reviewNotifier.value.addAll(reviewDb.values);
   reviewNotifier.notifyListeners();
 }
